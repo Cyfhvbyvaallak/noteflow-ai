@@ -21,9 +21,12 @@ class Settings:
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "1440"))
 
     # Database
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "mysql+pymysql://root:password@localhost:3306/noteflow_ai")
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "")
     SQLITE_FALLBACK: bool = os.getenv("SQLITE_FALLBACK", "True").lower() in ("true", "1", "t")
-    SQLITE_URL: str = os.getenv("SQLITE_URL", "sqlite:///./noteflow_ai.db")
+    SQLITE_URL: str = os.getenv(
+        "SQLITE_URL",
+        "sqlite:////tmp/noteflow_ai.db" if os.getenv("VERCEL") else "sqlite:///./noteflow_ai.db"
+    )
 
     # AI Configuration
     OPENAI_API_KEY: str = os.getenv("OPENAI_API_KEY", "")

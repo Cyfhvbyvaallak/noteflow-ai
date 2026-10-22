@@ -21,11 +21,14 @@ class PasswordChangeRequest(BaseModel):
 @router.get("/status")
 def get_system_status():
     has_openai = bool(settings.OPENAI_API_KEY and not settings.OPENAI_API_KEY.startswith("your_"))
+    from app.database.connection import engine_info
     return {
         "ai_engine": "OpenAI Live API" if has_openai else "Intelligent Academic Demo Engine",
         "openai_model": settings.OPENAI_MODEL if has_openai else "Academic Heuristic Engine",
         "demo_mode_active": not has_openai,
-        "database_type": "MySQL" if settings.DATABASE_URL.startswith("mysql") else "SQLite",
+        "database_type": engine_info.get("type", "SQLite"),
+        "database_connected": engine_info.get("connected", True),
+        "database_note": engine_info.get("note", "Operational"),
         "stt_provider": "OpenAI Whisper" if has_openai else "Intelligent Demo Transcriber"
     }
 
