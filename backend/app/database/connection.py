@@ -18,28 +18,46 @@ def get_engine():
 
     # 1. PostgreSQL (Supabase Cloud Database)
     if db_url.startswith("postgresql") or db_url.startswith("postgres"):
-        if db_url.startswith("postgres://"):
-            db_url = db_url.replace("postgres://", "postgresql+psycopg2://", 1)
-        elif db_url.startswith("postgresql://") and not db_url.startswith("postgresql+"):
-            db_url = db_url.replace("postgresql://", "postgresql+psycopg2://", 1)
+        import re
 
-        try:
-            logger.info("Attempting connection to PostgreSQL (Supabase) database with psycopg2...")
-            engine = create_engine(
-                db_url,
-                pool_pre_ping=True,
-                pool_recycle=300
-            )
-            with engine.connect() as conn:
-                logger.info("Successfully connected to PostgreSQL (Supabase) database!")
-            engine_info["type"] = "PostgreSQL (Supabase)"
-            engine_info["connected"] = True
-            engine_info["note"] = "Connected to Supabase cloud database"
-            return engine
-        except Exception as e:
-            logger.warning(f"psycopg2 connection attempt failed ({e}). Trying pure-Python pg8000 driver...")
+        candidate_urls = []
+
+        # If direct IPv6 host db.xxx.supabase.co was used, add IPv4 connection pooler candidate
+        match = re.search(r'postgres:([^@]+)@db\.([a-zA-Z0-9]+)\.supabase\.co', db_url)
+        if match:
+            pwd, ref = match.group(1), match.group(2)
+            candidate_urls.append(f"postgresql+psycopg2://postgres.{ref}:{pwd}@aws-0-ap-south-1.pooler.supabase.com:6543/postgres")
+            candidate_urls.append(f"postgresql+psycopg2://postgres.{ref}:{pwd}@aws-0-ap-south-1.pooler.supabase.com:5432/postgres")
+
+        # Standardize configured URL
+        clean_url = db_url
+        if clean_url.startswith("postgres://"):
+            clean_url = clean_url.replace("postgres://", "postgresql+psycopg2://", 1)
+        elif clean_url.startswith("postgresql://") and not clean_url.startswith("postgresql+"):
+            clean_url = clean_url.replace("postgresql://", "postgresql+psycopg2://", 1)
+        candidate_urls.append(clean_url)
+
+        last_error = None
+        for cand_url in candidate_urls:
             try:
-                pg8000_url = db_url.replace("postgresql+psycopg2://", "postgresql+pg8000://").replace("postgresql://", "postgresql+pg8000://")
+                engine = create_engine(
+                    cand_url,
+                    pool_pre_ping=True,
+                    pool_recycle=300
+                )
+                with engine.connect() as conn:
+                    logger.info("Successfully connected to PostgreSQL (Supabase) database!")
+                engine_info["type"] = "PostgreSQL (Supabase)"
+                engine_info["connected"] = True
+                engine_info["note"] = "Connected to Supabase cloud database"
+                return engine
+            except Exception as e:
+                last_error = e
+
+        # Pure-Python pg8000 fallback
+        if match:
+            try:
+                pg8000_url = f"postgresql+pg8000://postgres.{ref}:{pwd}@aws-0-ap-south-1.pooler.supabase.com:5432/postgres"
                 engine = create_engine(pg8000_url, pool_pre_ping=True, pool_recycle=300)
                 with engine.connect() as conn:
                     logger.info("Connected to PostgreSQL using pg8000 driver!")
@@ -48,10 +66,11 @@ def get_engine():
                 engine_info["note"] = "Connected to Supabase cloud database via pg8000"
                 return engine
             except Exception as e2:
-                logger.warning(f"pg8000 connection also failed ({e2}). Checking for fallback...")
-                engine_info["note"] = f"PostgreSQL error: {str(e)[:100]} | pg8000: {str(e2)[:80]}"
-                if not settings.SQLITE_FALLBACK:
-                    raise e
+                last_error = e2
+
+        engine_info["note"] = f"PostgreSQL error: {str(last_error)[:120]}"
+        if not settings.SQLITE_FALLBACK:
+            raise last_error
 
     # 2. Attempt connecting to MySQL
     elif db_url.startswith("mysql"):
