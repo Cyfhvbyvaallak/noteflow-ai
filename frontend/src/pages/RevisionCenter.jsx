@@ -125,13 +125,13 @@ export function RevisionCenter() {
   return (
     <div className="space-y-8">
       {/* Header Banner */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-950 via-purple-950/40 to-slate-950 p-6 sm:p-8 rounded-3xl text-white shadow-glass-card border border-white/10">
+      <div className="relative overflow-hidden bg-[#FFFDF5] p-6 sm:p-8 rounded-3xl text-stone-900 shadow-warm-card border border-[#E8D5A0]">
         <div className="space-y-2">
           <Badge variant="purple" size="md">Active Recall Revision</Badge>
-          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
+          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-stone-900">
             Study Smarter. Remember More.
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-lg leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-stone-600 max-w-lg leading-relaxed font-medium">
             Flip through active recall flashcards, terminology glossaries, and high-probability exam concepts extracted directly from your lectures.
           </p>
         </div>
@@ -146,8 +146,8 @@ export function RevisionCenter() {
               onClick={() => handleSelectLecture(lec.id)}
               className={`px-4 py-2 rounded-2xl text-xs font-black transition-all whitespace-nowrap cursor-pointer border ${
                 selectedLectureId === lec.id
-                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-purple-400/40 shadow-glow-purple'
-                  : 'bg-slate-900/80 border-white/10 text-slate-400 hover:text-white'
+                  ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-purple-500 shadow-sm'
+                  : 'bg-[#FFFDF5] border-[#E8D5A0] text-stone-700 hover:text-stone-900 hover:bg-[#FFF9E8]'
               }`}
             >
               {lec.subject}: {lec.title.length > 25 ? lec.title.substring(0, 25) + '...' : lec.title}
@@ -158,9 +158,9 @@ export function RevisionCenter() {
 
       {/* Flashcard Studio Arena */}
       <div className="space-y-6">
-        <div className="flex items-center justify-between max-w-xl mx-auto text-xs font-extrabold text-slate-400 px-2">
+        <div className="flex items-center justify-between max-w-xl mx-auto text-xs font-extrabold text-stone-500 px-2">
           <span>Card {currentCardIndex + 1} of {cards.length}</span>
-          <span className="text-purple-300">Space or Click to Flip</span>
+          <span className="text-purple-800">Space or Click to Flip</span>
         </div>
 
         {/* 3D Flip Flashcard */}

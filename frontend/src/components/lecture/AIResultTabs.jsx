@@ -70,14 +70,14 @@ export function AIResultTabs({
 
   return (
     <div className="space-y-6">
-      {/* Dark Glass Navigation Tabs */}
-      <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-slate-900/80 border border-white/10 overflow-x-auto shadow-inner">
+      {/* Light Warm Glass Navigation Tabs */}
+      <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-[#FFFDF5] border border-[#E8D5A0] overflow-x-auto shadow-warm-sm">
         <button
           onClick={() => onTabChange('transcript')}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all whitespace-nowrap cursor-pointer ${
             activeTab === 'transcript'
-              ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-glow-cyan'
-              : 'text-slate-400 hover:text-white hover:bg-white/5'
+              ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-sm'
+              : 'text-stone-600 hover:text-stone-900 hover:bg-[#FFF9E8]'
           }`}
         >
           <FileText className="w-4 h-4" />
@@ -88,8 +88,8 @@ export function AIResultTabs({
           onClick={() => onTabChange('summary')}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all whitespace-nowrap cursor-pointer ${
             activeTab === 'summary'
-              ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 shadow-glow-emerald'
-              : 'text-slate-400 hover:text-white hover:bg-white/5'
+              ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-glow-emerald'
+              : 'text-stone-600 hover:text-stone-900 hover:bg-[#FFF9E8]'
           }`}
         >
           <Sparkles className="w-4 h-4" />
@@ -100,8 +100,8 @@ export function AIResultTabs({
           onClick={() => onTabChange('key_points')}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all whitespace-nowrap cursor-pointer ${
             activeTab === 'key_points'
-              ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 shadow-md'
-              : 'text-slate-400 hover:text-white hover:bg-white/5'
+              ? 'bg-gradient-to-r from-amber-500 to-orange-600 text-white shadow-sm'
+              : 'text-stone-600 hover:text-stone-900 hover:bg-[#FFF9E8]'
           }`}
         >
           <Key className="w-4 h-4" />
@@ -113,7 +113,7 @@ export function AIResultTabs({
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all whitespace-nowrap cursor-pointer ${
             activeTab === 'revision'
               ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-glow-purple'
-              : 'text-slate-400 hover:text-white hover:bg-white/5'
+              : 'text-stone-600 hover:text-stone-900 hover:bg-[#FFF9E8]'
           }`}
         >
           <BookOpen className="w-4 h-4" />
@@ -124,8 +124,8 @@ export function AIResultTabs({
           onClick={() => onTabChange('quiz')}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black transition-all whitespace-nowrap cursor-pointer ${
             activeTab === 'quiz'
-              ? 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 shadow-glow-emerald'
-              : 'text-slate-400 hover:text-white hover:bg-white/5'
+              ? 'bg-gradient-to-r from-emerald-600 to-cyan-600 text-white shadow-glow-emerald'
+              : 'text-stone-600 hover:text-stone-900 hover:bg-[#FFF9E8]'
           }`}
         >
           <HelpCircle className="w-4 h-4" />
@@ -140,15 +140,15 @@ export function AIResultTabs({
 
       {/* Tab 2: Executive AI Summary */}
       {activeTab === 'summary' && (
-        <Card className="p-6 sm:p-8 bg-slate-900/70 border-white/10 shadow-glass-card space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
+        <Card className="p-6 sm:p-8 bg-[#FFFDF5] border-[#E8D5A0] shadow-warm-card space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E8D5A0]/60 pb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shadow-glow-emerald">
+              <div className="w-10 h-10 rounded-2xl bg-emerald-50 border border-emerald-300 text-emerald-700 flex items-center justify-center shadow-sm">
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-lg font-black text-white">Executive AI Summary</h3>
-                <p className="text-xs text-slate-400 font-medium">Distilled 3-minute study overview</p>
+                <h3 className="text-lg font-black text-stone-900">Executive AI Summary</h3>
+                <p className="text-xs text-stone-500 font-medium">Distilled 3-minute study overview</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -163,7 +163,7 @@ export function AIResultTabs({
             </div>
           </div>
 
-          <div className="prose prose-invert max-w-none text-slate-200 text-xs sm:text-sm leading-relaxed whitespace-pre-wrap font-medium">
+          <div className="max-w-none text-stone-800 text-xs sm:text-sm leading-relaxed whitespace-pre-wrap font-medium">
             {summary}
           </div>
         </Card>
@@ -173,15 +173,15 @@ export function AIResultTabs({
       {activeTab === 'key_points' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-400">
+            <h3 className="text-sm font-extrabold uppercase tracking-wider text-stone-500">
               Prioritized Key Principles
             </h3>
-            <span className="text-xs text-amber-400 font-bold">{keyPoints.length} Key Concepts</span>
+            <span className="text-xs text-amber-700 font-bold">{keyPoints.length} Key Concepts</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {keyPoints.map((kp, idx) => (
-              <Card key={idx} hoverEffect className="p-5 bg-slate-900/70 border-white/10 space-y-2.5">
+              <Card key={idx} hoverEffect className="p-5 bg-[#FFFDF5] border-[#E8D5A0] space-y-2.5">
                 <div className="flex items-center justify-between">
                   <Badge
                     variant={
@@ -195,11 +195,11 @@ export function AIResultTabs({
                   >
                     {kp.importance || 'High'}
                   </Badge>
-                  <span className="text-xs font-mono text-slate-500">#{idx + 1}</span>
+                  <span className="text-xs font-mono text-stone-400">#{idx + 1}</span>
                 </div>
-                <h4 className="font-bold text-white text-sm sm:text-base">{kp.point}</h4>
+                <h4 className="font-bold text-stone-900 text-sm sm:text-base">{kp.point}</h4>
                 {kp.explanation && (
-                  <p className="text-xs text-slate-400 leading-relaxed">{kp.explanation}</p>
+                  <p className="text-xs text-stone-600 leading-relaxed">{kp.explanation}</p>
                 )}
               </Card>
             ))}
@@ -212,8 +212,8 @@ export function AIResultTabs({
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-black text-white">Exam Revision Kit</h3>
-              <p className="text-xs text-slate-400">Definitions, concept cards, and exam focus sheet</p>
+              <h3 className="text-lg font-black text-stone-900">Exam Revision Kit</h3>
+              <p className="text-xs text-stone-500">Definitions, concept cards, and exam focus sheet</p>
             </div>
             <Button
               variant="secondary"
@@ -228,14 +228,14 @@ export function AIResultTabs({
           {/* Definitions */}
           {revisionNotes.definitions?.length > 0 && (
             <div className="space-y-3">
-              <h4 className="text-xs font-extrabold uppercase tracking-wider text-purple-400">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-purple-700">
                 Terminology Glossary
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {revisionNotes.definitions.map((d, idx) => (
-                  <Card key={idx} className="p-4 bg-slate-900/70 border-purple-500/20 space-y-1.5">
-                    <span className="text-xs font-black text-purple-300">{d.term}</span>
-                    <p className="text-xs text-slate-300 leading-relaxed">{d.definition}</p>
+                  <Card key={idx} className="p-4 bg-[#FFFDF5] border-purple-200 space-y-1.5">
+                    <span className="text-xs font-black text-purple-800">{d.term}</span>
+                    <p className="text-xs text-stone-700 leading-relaxed">{d.definition}</p>
                   </Card>
                 ))}
               </div>
@@ -245,17 +245,17 @@ export function AIResultTabs({
           {/* Important Concepts */}
           {revisionNotes.important_concepts?.length > 0 && (
             <div className="space-y-3">
-              <h4 className="text-xs font-extrabold uppercase tracking-wider text-cyan-400">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-teal-800">
                 Core Conceptual Models
               </h4>
               <div className="space-y-3">
                 {revisionNotes.important_concepts.map((c, idx) => (
-                  <Card key={idx} className="p-5 bg-slate-900/70 border-cyan-500/20 space-y-2">
-                    <h5 className="font-extrabold text-sm text-cyan-300">{c.concept}</h5>
-                    <p className="text-xs text-slate-300 leading-relaxed">{c.explanation}</p>
+                  <Card key={idx} className="p-5 bg-[#FFFDF5] border-teal-200 space-y-2">
+                    <h5 className="font-extrabold text-sm text-teal-800">{c.concept}</h5>
+                    <p className="text-xs text-stone-700 leading-relaxed">{c.explanation}</p>
                     {c.example && (
-                      <div className="p-2.5 rounded-xl bg-slate-950 border border-white/5 text-xs text-slate-400">
-                        <strong className="text-slate-200">Example:</strong> {c.example}
+                      <div className="p-2.5 rounded-xl bg-[#FFF9E8] border border-[#E8D5A0] text-xs text-stone-600">
+                        <strong className="text-stone-800">Example:</strong> {c.example}
                       </div>
                     )}
                   </Card>
@@ -268,13 +268,13 @@ export function AIResultTabs({
 
       {/* Tab 5: Practice Quiz Launcher */}
       {activeTab === 'quiz' && (
-        <Card className="p-8 text-center space-y-6 bg-slate-900/70 border-white/10 shadow-glass-card">
-          <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-emerald-500 to-cyan-500 text-slate-950 font-black flex items-center justify-center mx-auto shadow-glow-emerald">
-            <HelpCircle className="w-8 h-8 text-slate-950" />
+        <Card className="p-8 text-center space-y-6 bg-[#FFFDF5] border-[#E8D5A0] shadow-warm-card">
+          <div className="w-16 h-16 rounded-3xl bg-gradient-to-tr from-emerald-600 to-teal-600 text-white font-black flex items-center justify-center mx-auto shadow-sm">
+            <HelpCircle className="w-8 h-8 text-white" />
           </div>
           <div className="space-y-2">
-            <h3 className="text-2xl font-black text-white">Interactive Practice Quiz</h3>
-            <p className="text-xs sm:text-sm text-slate-400 max-w-md mx-auto leading-relaxed">
+            <h3 className="text-2xl font-black text-stone-900">Interactive Practice Quiz</h3>
+            <p className="text-xs sm:text-sm text-stone-600 max-w-md mx-auto leading-relaxed">
               Test your understanding with automated MCQs generated strictly from this lecture transcript.
             </p>
           </div>

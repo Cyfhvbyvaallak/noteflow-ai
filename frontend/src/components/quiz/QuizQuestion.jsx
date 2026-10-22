@@ -17,13 +17,13 @@ export function QuizQuestion({
   ].filter((opt) => opt.text && opt.text.trim());
 
   return (
-    <Card className="p-6 sm:p-8 space-y-6 max-w-3xl mx-auto bg-slate-900/80 border-white/10 shadow-glass-card">
+    <Card className="p-6 sm:p-8 space-y-6 max-w-3xl mx-auto bg-[#FFFDF5] border-[#E8D5A0] shadow-warm-card">
       {/* Question Header */}
       <div className="space-y-2">
-        <span className="text-xs font-black uppercase tracking-wider text-cyan-400">
+        <span className="text-xs font-black uppercase tracking-wider text-teal-800">
           Question {questionIndex + 1} of {totalQuestions}
         </span>
-        <h3 className="text-base sm:text-lg font-black text-white leading-relaxed">
+        <h3 className="text-base sm:text-lg font-black text-stone-900 leading-relaxed">
           {question.question}
         </h3>
       </div>
@@ -38,16 +38,16 @@ export function QuizQuestion({
               onClick={() => onSelectAnswer(question.id, opt.key)}
               className={`p-4 rounded-2xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-4 ${
                 isSelected
-                  ? 'bg-emerald-950/80 border-emerald-400 text-emerald-200 shadow-glow-emerald font-bold'
-                  : 'bg-slate-950/70 border-white/10 hover:border-cyan-500/40 hover:bg-slate-950 text-slate-300'
+                  ? 'bg-emerald-50 border-emerald-500 text-emerald-950 shadow-sm font-bold'
+                  : 'bg-[#FFF9E8] border-[#E8D5A0] hover:border-teal-400 hover:bg-[#FFFDF5] text-stone-800'
               }`}
             >
               <div className="flex items-center gap-3.5 min-w-0">
                 <span
                   className={`w-8 h-8 rounded-xl text-xs font-black flex items-center justify-center shrink-0 ${
                     isSelected
-                      ? 'bg-gradient-to-tr from-emerald-500 to-teal-500 text-slate-950 shadow-glow-emerald'
-                      : 'bg-slate-800 text-slate-400'
+                      ? 'bg-gradient-to-tr from-emerald-600 to-teal-600 text-white shadow-sm'
+                      : 'bg-[#FBF1D5] text-stone-700 border border-[#E8D5A0]'
                   }`}
                 >
                   {opt.key}
@@ -57,11 +57,11 @@ export function QuizQuestion({
 
               <div className="shrink-0">
                 {isSelected ? (
-                  <div className="w-5 h-5 rounded-full bg-emerald-500 text-slate-950 flex items-center justify-center font-bold">
+                  <div className="w-5 h-5 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold">
                     <Check className="w-3.5 h-3.5 stroke-[3]" />
                   </div>
                 ) : (
-                  <Circle className="w-5 h-5 text-slate-600" />
+                  <Circle className="w-5 h-5 text-stone-400" />
                 )}
               </div>
             </div>

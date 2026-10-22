@@ -60,33 +60,33 @@ export function AIAssistantModal({ isOpen, onClose }) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/40 backdrop-blur-sm">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.25 }}
-          className="w-full max-w-2xl bg-slate-900/95 border border-purple-500/30 rounded-3xl shadow-glow-purple flex flex-col max-h-[85vh] overflow-hidden"
+          className="w-full max-w-2xl bg-[#FFFDF5] border border-purple-300/80 rounded-3xl shadow-warm-hover flex flex-col max-h-[85vh] overflow-hidden"
         >
           {/* Modal Header */}
-          <div className="p-5 border-b border-white/10 flex items-center justify-between bg-white/[0.02]">
+          <div className="p-5 border-b border-[#E8D5A0]/60 flex items-center justify-between bg-[#FFF9E8]/60">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-500 to-emerald-400 flex items-center justify-center text-white shadow-glow-purple">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-purple-600 via-indigo-600 to-emerald-600 flex items-center justify-center text-white shadow-sm">
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-extrabold text-base text-white flex items-center gap-2">
+                <h3 className="font-extrabold text-base text-stone-900 flex items-center gap-2">
                   NoteFlow AI Study Copilot
-                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                  <span className="text-[10px] px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 border border-purple-300 font-bold">
                     GPT-4o Ready
                   </span>
                 </h3>
-                <p className="text-xs text-slate-400">Context-aware lecture comprehension assistant</p>
+                <p className="text-xs text-stone-500">Context-aware lecture comprehension assistant</p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+              className="p-2 rounded-xl text-stone-400 hover:text-stone-700 hover:bg-[#FBF1D5] transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -102,7 +102,7 @@ export function AIAssistantModal({ isOpen, onClose }) {
                 }`}
               >
                 {msg.role === 'assistant' && (
-                  <div className="w-8 h-8 rounded-xl bg-purple-600/30 border border-purple-500/40 text-purple-300 flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-xl bg-purple-100 border border-purple-300 text-purple-700 flex items-center justify-center shrink-0">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
@@ -110,15 +110,15 @@ export function AIAssistantModal({ isOpen, onClose }) {
                 <div
                   className={`p-4 rounded-2xl max-w-[85%] leading-relaxed ${
                     msg.role === 'user'
-                      ? 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-br-none shadow-glow-emerald font-medium'
-                      : 'bg-slate-800/80 border border-white/10 text-slate-200 rounded-bl-none shadow-glass-card whitespace-pre-wrap'
+                      ? 'bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-br-none shadow-sm font-medium'
+                      : 'bg-[#FFF9E8] border border-[#E8D5A0] text-stone-800 rounded-bl-none shadow-warm-sm whitespace-pre-wrap'
                   }`}
                 >
                   {msg.content}
                 </div>
 
                 {msg.role === 'user' && (
-                  <div className="w-8 h-8 rounded-xl bg-emerald-600/30 border border-emerald-500/40 text-emerald-300 flex items-center justify-center shrink-0 font-bold text-xs">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-100 border border-emerald-300 text-emerald-800 flex items-center justify-center shrink-0 font-bold text-xs">
                     You
                   </div>
                 )}
@@ -126,7 +126,7 @@ export function AIAssistantModal({ isOpen, onClose }) {
             ))}
 
             {isThinking && (
-              <div className="flex items-center gap-3 text-xs text-purple-400 font-bold p-2">
+              <div className="flex items-center gap-3 text-xs text-purple-700 font-bold p-2">
                 <Bot className="w-4 h-4 animate-spin" />
                 <span>AI is analyzing lecture concepts...</span>
               </div>
@@ -135,8 +135,8 @@ export function AIAssistantModal({ isOpen, onClose }) {
 
           {/* Suggested Prompts */}
           {messages.length <= 2 && (
-            <div className="px-6 py-2 border-t border-white/5 bg-white/[0.01]">
-              <p className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400 mb-2">
+            <div className="px-6 py-2 border-t border-[#E8D5A0]/40 bg-[#FFF9E8]/40">
+              <p className="text-[10px] font-extrabold uppercase tracking-wider text-stone-500 mb-2">
                 Suggested Prompts
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -144,7 +144,7 @@ export function AIAssistantModal({ isOpen, onClose }) {
                   <button
                     key={idx}
                     onClick={() => handleSend(s.prompt)}
-                    className="p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-800 border border-white/5 hover:border-purple-500/40 text-left text-xs text-slate-300 hover:text-white transition-all line-clamp-1"
+                    className="p-2.5 rounded-xl bg-[#FFFDF5] hover:bg-[#FFF9E8] border border-[#E8D5A0] hover:border-purple-400 text-left text-xs text-stone-700 hover:text-stone-900 transition-all line-clamp-1 cursor-pointer"
                   >
                     {s.text}
                   </button>
@@ -154,7 +154,7 @@ export function AIAssistantModal({ isOpen, onClose }) {
           )}
 
           {/* Input Box */}
-          <div className="p-4 border-t border-white/10 bg-slate-950/80">
+          <div className="p-4 border-t border-[#E8D5A0]/60 bg-[#FFFDF5]">
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -168,7 +168,7 @@ export function AIAssistantModal({ isOpen, onClose }) {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 disabled={isThinking}
-                className="flex-1 px-4 py-3 rounded-2xl bg-slate-900 border border-white/15 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all shadow-inner"
+                className="flex-1 px-4 py-3 rounded-2xl bg-[#FFF9E8] border border-[#E8D5A0] text-stone-900 placeholder:text-stone-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all shadow-inner"
               />
               <Button
                 type="submit"

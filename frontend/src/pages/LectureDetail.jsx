@@ -135,7 +135,7 @@ export function LectureDetail() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <button
           onClick={() => navigate('/dashboard')}
-          className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold text-slate-400 hover:text-emerald-400 transition-colors"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold text-stone-600 hover:text-emerald-700 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Dashboard</span>
@@ -174,7 +174,7 @@ export function LectureDetail() {
           <button
             onClick={handleDelete}
             title="Delete lecture"
-            className="p-2 rounded-xl text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+            className="p-2 rounded-xl text-stone-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
           >
             <Trash2 className="w-4 h-4" />
           </button>
@@ -182,32 +182,32 @@ export function LectureDetail() {
       </div>
 
       {/* Header Banner */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-950 via-slate-900 to-emerald-950/60 p-6 sm:p-8 rounded-3xl text-white shadow-glass-card border border-white/10">
+      <div className="relative overflow-hidden bg-[#FFFDF5] p-6 sm:p-8 rounded-3xl text-stone-900 shadow-warm-card border border-[#E8D5A0]">
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-2.5">
-            <span className="text-xs font-black px-3 py-1 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 shadow-glow-emerald">
+            <span className="text-xs font-black px-3 py-1 rounded-xl bg-emerald-100 text-emerald-900 border border-emerald-300">
               {lecture.subject}
             </span>
             <Badge variant="success" size="sm" dot>
               {lecture.status}
             </Badge>
-            <span className="text-xs text-slate-400 font-mono">
+            <span className="text-xs text-stone-500 font-mono">
               Source: {lecture.source_type?.replace('_', ' ')}
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
+          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-stone-900">
             {lecture.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 font-medium">
+          <div className="flex flex-wrap items-center gap-4 text-xs text-stone-500 font-medium">
             <span className="flex items-center gap-1.5">
-              <Clock className="w-4 h-4 text-emerald-400" />
+              <Clock className="w-4 h-4 text-emerald-700" />
               {formatDuration(lecture.duration)}
             </span>
             <span>•</span>
             <span className="flex items-center gap-1.5">
-              <Calendar className="w-4 h-4 text-emerald-400" />
+              <Calendar className="w-4 h-4 text-emerald-700" />
               {formatDate(lecture.created_at)}
             </span>
           </div>

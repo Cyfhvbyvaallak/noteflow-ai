@@ -40,8 +40,8 @@ export function WaveformVisualizer({ isRecording, isPaused, audioStream }) {
 
             // Gradient from emerald to teal
             const gradient = ctx.createLinearGradient(0, canvas.height, 0, 0);
-            gradient.addColorStop(0, '#10b981');
-            gradient.addColorStop(1, '#059669');
+            gradient.addColorStop(0, '#059669');
+            gradient.addColorStop(1, '#0d9488');
 
             ctx.fillStyle = gradient;
             ctx.beginPath();
@@ -63,7 +63,7 @@ export function WaveformVisualizer({ isRecording, isPaused, audioStream }) {
       const barWidth = canvas.width / bars;
       for (let i = 0; i < bars; i++) {
         const barHeight = isPaused ? 6 : 4;
-        ctx.fillStyle = isPaused ? '#f59e0b' : '#cbd5e1';
+        ctx.fillStyle = isPaused ? '#d97706' : '#d6cbb0';
         ctx.beginPath();
         ctx.roundRect(i * barWidth + 2, (canvas.height - barHeight) / 2, barWidth - 4, barHeight, 2);
         ctx.fill();
@@ -81,7 +81,7 @@ export function WaveformVisualizer({ isRecording, isPaused, audioStream }) {
   }, [isRecording, isPaused, audioStream]);
 
   return (
-    <div className="w-full h-24 bg-slate-900/5 rounded-2xl flex items-center justify-center p-4 border border-slate-200/60 overflow-hidden">
+    <div className="w-full h-24 bg-[#FFFDF5] rounded-2xl flex items-center justify-center p-4 border border-[#E8D5A0] overflow-hidden shadow-inner">
       <canvas
         ref={canvasRef}
         width={400}

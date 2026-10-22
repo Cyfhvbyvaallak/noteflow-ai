@@ -49,9 +49,9 @@ export function StudyCore3D() {
       onMouseLeave={handleMouseLeave}
       className="relative w-full max-w-xl aspect-square mx-auto perspective-1000 flex items-center justify-center select-none"
     >
-      {/* Radial Background Glows (Purple + Cyan + Emerald) */}
-      <div className="absolute inset-0 bg-gradient-radial from-purple-500/20 via-cyan-500/10 to-transparent rounded-full blur-3xl pointer-events-none animate-pulse" />
-      <div className="absolute bottom-4 inset-x-12 h-20 bg-gradient-radial from-emerald-500/30 to-transparent rounded-full blur-2xl pointer-events-none" />
+      {/* Radial Background Glows */}
+      <div className="absolute inset-0 bg-gradient-radial from-amber-200/40 via-emerald-200/20 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-4 inset-x-12 h-20 bg-gradient-radial from-purple-200/30 to-transparent rounded-full blur-2xl pointer-events-none" />
 
       {/* 3D Tilting Stage */}
       <motion.div
@@ -62,47 +62,47 @@ export function StudyCore3D() {
         }}
         className="relative w-full h-full flex items-center justify-center"
       >
-        {/* Futuristic Glowing Base Platform */}
+        {/* Glowing Base Platform */}
         <div
-          className="absolute bottom-6 w-80 h-80 rounded-full border border-cyan-500/30 bg-gradient-to-t from-cyan-950/40 to-transparent pointer-events-none shadow-glow-cyan"
+          className="absolute bottom-6 w-80 h-80 rounded-full border border-[#E8D5A0] bg-gradient-to-t from-[#FFFDF5] to-transparent pointer-events-none shadow-warm-sm"
           style={{ transform: 'rotateX(75deg) translateZ(-40px)' }}
         />
 
-        {/* Outer Orbital Neon Ring 1 */}
+        {/* Outer Orbital Ring 1 */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-          className="absolute w-[420px] h-[420px] rounded-full border border-purple-500/30 border-dashed pointer-events-none"
+          className="absolute w-[420px] h-[420px] rounded-full border border-purple-300 border-dashed pointer-events-none"
           style={{ transform: 'rotateX(65deg) rotateY(15deg)' }}
         />
 
-        {/* Outer Orbital Neon Ring 2 */}
+        {/* Outer Orbital Ring 2 */}
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
-          className="absolute w-[330px] h-[330px] rounded-full border border-cyan-400/35 pointer-events-none"
+          className="absolute w-[330px] h-[330px] rounded-full border border-teal-300 pointer-events-none"
           style={{ transform: 'rotateX(55deg) rotateY(-20deg)' }}
         />
 
-        {/* ================= CENTRAL GLOWING AI BRAIN / INTELLIGENCE CORE ================= */}
+        {/* ================= CENTRAL AI STUDY CORE ================= */}
         <motion.div
           animate={{
-            scale: [1, 1.06, 1],
+            scale: [1, 1.05, 1],
             boxShadow: [
-              '0 0 50px rgba(139,92,246,0.5), inset 0 0 30px rgba(6,182,212,0.4)',
-              '0 0 85px rgba(6,182,212,0.7), inset 0 0 45px rgba(139,92,246,0.6)',
-              '0 0 50px rgba(139,92,246,0.5), inset 0 0 30px rgba(6,182,212,0.4)',
+              '0 10px 40px rgba(120,95,40,0.12), inset 0 0 20px rgba(255,255,255,0.9)',
+              '0 15px 50px rgba(16,185,129,0.2), inset 0 0 30px rgba(255,255,255,0.9)',
+              '0 10px 40px rgba(120,95,40,0.12), inset 0 0 20px rgba(255,255,255,0.9)',
             ]
           }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          className="relative z-20 w-32 h-32 rounded-3xl bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 border-2 border-cyan-400/60 flex flex-col items-center justify-center p-3 text-center shadow-2xl backdrop-blur-2xl"
+          className="relative z-20 w-32 h-32 rounded-3xl bg-gradient-to-br from-[#FFFFFF] via-[#FFFDF5] to-[#FFF9E8] border-2 border-[#E8D5A0] flex flex-col items-center justify-center p-3 text-center shadow-warm-card backdrop-blur-2xl"
           style={{ transform: 'translateZ(70px)' }}
         >
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-500 via-cyan-400 to-emerald-400 flex items-center justify-center text-slate-950 shadow-glow-cyan mb-1.5 font-bold">
-            <Brain className="w-7 h-7 text-slate-950 animate-pulse" />
+          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 via-teal-600 to-emerald-600 flex items-center justify-center text-white shadow-sm mb-1.5 font-bold">
+            <Brain className="w-7 h-7 text-white animate-pulse" />
           </div>
-          <span className="text-[11px] font-black tracking-widest text-cyan-300 uppercase">NoteFlow</span>
-          <span className="text-[9px] font-extrabold text-purple-300">AI Study Core</span>
+          <span className="text-[11px] font-black tracking-widest text-emerald-800 uppercase">NoteFlow</span>
+          <span className="text-[9px] font-extrabold text-purple-800">AI Study Core</span>
         </motion.div>
 
         {/* ================= FLOATING CARD 1: 🎙️ LECTURE AUDIO (Top-Left) ================= */}
@@ -112,24 +112,24 @@ export function StudyCore3D() {
             rotate: [-2, 2, -2]
           }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-2 left-0 z-30 p-3 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-rose-500/40 shadow-glow-rose flex items-center gap-2.5 max-w-[210px]"
+          className="absolute top-2 left-0 z-30 p-3 rounded-2xl bg-[#FFFDF5] backdrop-blur-2xl border border-rose-300 shadow-warm-card flex items-center gap-2.5 max-w-[210px]"
           style={{ transform: 'translateZ(100px)' }}
         >
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-600 to-red-500 text-white flex items-center justify-center shadow-sm shrink-0 animate-mic-pulse">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-500 to-red-500 text-white flex items-center justify-center shadow-sm shrink-0">
             <Mic className="w-4 h-4" />
           </div>
           <div className="min-w-0">
             <div className="flex items-center gap-1.5">
-              <span className="text-[9px] font-extrabold uppercase tracking-wider text-rose-400">Live Speech</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-ping" />
+              <span className="text-[9px] font-extrabold uppercase tracking-wider text-rose-700">Live Speech</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping" />
             </div>
-            <p className="text-[11px] font-extrabold text-white truncate">Quantum Mechanics</p>
-            {/* Neon audio bars */}
+            <p className="text-[11px] font-extrabold text-stone-900 truncate">Quantum Mechanics</p>
+            {/* Audio frequency bars */}
             <div className="flex items-end gap-0.5 h-2 mt-1">
-              <div className="w-1 bg-emerald-400 rounded-full h-full wave-bar-neon" style={{ animationDelay: '0.1s' }} />
-              <div className="w-1 bg-cyan-400 rounded-full h-2/3 wave-bar-neon" style={{ animationDelay: '0.3s' }} />
-              <div className="w-1 bg-purple-400 rounded-full h-4/5 wave-bar-neon" style={{ animationDelay: '0.2s' }} />
-              <div className="w-1 bg-emerald-400 rounded-full h-1/2 wave-bar-neon" style={{ animationDelay: '0.4s' }} />
+              <div className="w-1 bg-emerald-600 rounded-full h-full wave-bar-neon" style={{ animationDelay: '0.1s' }} />
+              <div className="w-1 bg-teal-600 rounded-full h-2/3 wave-bar-neon" style={{ animationDelay: '0.3s' }} />
+              <div className="w-1 bg-purple-600 rounded-full h-4/5 wave-bar-neon" style={{ animationDelay: '0.2s' }} />
+              <div className="w-1 bg-emerald-600 rounded-full h-1/2 wave-bar-neon" style={{ animationDelay: '0.4s' }} />
             </div>
           </div>
         </motion.div>
@@ -141,15 +141,15 @@ export function StudyCore3D() {
             rotate: [2, -1, 2]
           }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
-          className="absolute top-6 right-0 z-25 p-3 rounded-2xl bg-slate-900/90 backdrop-blur-2xl border border-cyan-500/40 shadow-glow-cyan flex items-center gap-2.5 max-w-[220px]"
+          className="absolute top-6 right-0 z-25 p-3 rounded-2xl bg-[#FFFDF5] backdrop-blur-2xl border border-teal-300 shadow-warm-card flex items-center gap-2.5 max-w-[220px]"
           style={{ transform: 'translateZ(85px)' }}
         >
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 text-slate-950 flex items-center justify-center shrink-0 shadow-sm font-bold">
-            <FileText className="w-4 h-4 text-slate-950" />
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-teal-500 to-cyan-600 text-white flex items-center justify-center shrink-0 shadow-sm font-bold">
+            <FileText className="w-4 h-4 text-white" />
           </div>
           <div className="min-w-0">
-            <span className="text-[9px] font-extrabold uppercase tracking-wider text-cyan-400">Speech-to-Text</span>
-            <p className="text-[10px] text-slate-300 line-clamp-2 leading-tight font-mono">
+            <span className="text-[9px] font-extrabold uppercase tracking-wider text-teal-800">Speech-to-Text</span>
+            <p className="text-[10px] text-stone-700 line-clamp-2 leading-tight font-mono">
               "λ = h / p (de Broglie wave duality)"
             </p>
           </div>
@@ -162,14 +162,14 @@ export function StudyCore3D() {
             rotate: [1, -2, 1]
           }}
           transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 0.8 }}
-          className="absolute bottom-4 left-0 z-30 p-3.5 rounded-2xl bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 text-white backdrop-blur-2xl border border-emerald-500/50 shadow-glow-emerald max-w-[220px]"
+          className="absolute bottom-4 left-0 z-30 p-3.5 rounded-2xl bg-[#FFFDF5] text-stone-900 backdrop-blur-2xl border border-emerald-300 shadow-warm-card max-w-[220px]"
           style={{ transform: 'translateZ(110px)' }}
         >
           <div className="flex items-center gap-2 mb-1">
-            <Sparkles className="w-4 h-4 text-emerald-400" />
-            <span className="text-[10px] font-extrabold text-emerald-300 uppercase tracking-wider">Executive AI Summary</span>
+            <Sparkles className="w-4 h-4 text-emerald-600" />
+            <span className="text-[10px] font-extrabold text-emerald-800 uppercase tracking-wider">Executive AI Summary</span>
           </div>
-          <p className="text-[10px] text-slate-200 leading-tight">
+          <p className="text-[10px] text-stone-700 leading-tight">
             ✓ 5 Key takeaways extracted<br />
             ✓ High-yield exam points tagged
           </p>
@@ -182,41 +182,31 @@ export function StudyCore3D() {
             rotate: [-1, 2, -1]
           }}
           transition={{ duration: 6.2, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-          className="absolute bottom-8 right-0 z-30 p-3 rounded-2xl bg-slate-900/95 backdrop-blur-2xl border border-purple-500/50 shadow-glow-purple max-w-[220px]"
+          className="absolute bottom-8 right-0 z-30 p-3 rounded-2xl bg-[#FFFDF5] backdrop-blur-2xl border border-purple-300 shadow-warm-card max-w-[220px]"
           style={{ transform: 'translateZ(95px)' }}
         >
           <div className="flex items-center justify-between mb-1.5">
             <div className="flex items-center gap-1.5">
-              <HelpCircle className="w-3.5 h-3.5 text-purple-400" />
-              <span className="text-[9px] font-extrabold uppercase tracking-wider text-purple-300">Practice Quiz</span>
+              <HelpCircle className="w-3.5 h-3.5 text-purple-600" />
+              <span className="text-[9px] font-extrabold uppercase tracking-wider text-purple-800">Practice Quiz</span>
             </div>
-            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">100% Match</span>
+            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300">100% Match</span>
           </div>
-          <p className="text-[10px] font-bold text-white line-clamp-1 mb-1">
+          <p className="text-[10px] font-bold text-stone-900 line-clamp-1 mb-1">
             Q: What is the de Broglie wavelength?
           </p>
-          <div className="flex items-center gap-1 text-[9px] font-semibold text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded-lg border border-emerald-500/40">
-            <CheckCircle2 className="w-3 h-3 text-emerald-400 shrink-0" />
+          <div className="flex items-center gap-1 text-[9px] font-semibold text-emerald-900 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-300">
+            <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
             <span>λ = h / p (Correct)</span>
           </div>
         </motion.div>
 
-        {/* Connecting Laser Conduits */}
-        <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 opacity-50">
-          <line x1="25%" y1="20%" x2="50%" y2="50%" stroke="url(#coreGrad1)" strokeWidth="1.5" strokeDasharray="4 4" />
-          <line x1="75%" y1="25%" x2="50%" y2="50%" stroke="url(#coreGrad2)" strokeWidth="1.5" strokeDasharray="4 4" />
-          <line x1="25%" y1="75%" x2="50%" y2="50%" stroke="url(#coreGrad1)" strokeWidth="1.5" strokeDasharray="4 4" />
-          <line x1="75%" y1="75%" x2="50%" y2="50%" stroke="url(#coreGrad2)" strokeWidth="1.5" strokeDasharray="4 4" />
-          <defs>
-            <linearGradient id="coreGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#10b981" />
-              <stop offset="100%" stopColor="#8b5cf6" />
-            </linearGradient>
-            <linearGradient id="coreGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#06b6d4" />
-              <stop offset="100%" stopColor="#8b5cf6" />
-            </linearGradient>
-          </defs>
+        {/* Connecting Lines */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 opacity-30">
+          <line x1="25%" y1="20%" x2="50%" y2="50%" stroke="#10b981" strokeWidth="1.5" strokeDasharray="4 4" />
+          <line x1="75%" y1="25%" x2="50%" y2="50%" stroke="#8b5cf6" strokeWidth="1.5" strokeDasharray="4 4" />
+          <line x1="25%" y1="75%" x2="50%" y2="50%" stroke="#10b981" strokeWidth="1.5" strokeDasharray="4 4" />
+          <line x1="75%" y1="75%" x2="50%" y2="50%" stroke="#8b5cf6" strokeWidth="1.5" strokeDasharray="4 4" />
         </svg>
       </motion.div>
     </div>

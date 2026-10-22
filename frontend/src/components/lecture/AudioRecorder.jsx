@@ -168,13 +168,13 @@ export function AudioRecorder() {
   };
 
   return (
-    <Card className="max-w-3xl mx-auto overflow-hidden shadow-glass-card border-white/10 bg-slate-900/80 backdrop-blur-2xl">
+    <Card className="max-w-3xl mx-auto overflow-hidden shadow-warm-card border-[#E8D5A0]/80 bg-[#FFFDF5]">
       <div className="p-6 sm:p-8 space-y-6">
         {/* Lecture Info Inputs */}
         <div className="space-y-4">
           <div>
-            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
-              Lecture Title <span className="text-rose-400">*</span>
+            <label className="block text-[11px] font-black uppercase tracking-wider text-stone-600 mb-1.5">
+              Lecture Title <span className="text-rose-500">*</span>
             </label>
             <input
               type="text"
@@ -182,12 +182,12 @@ export function AudioRecorder() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               disabled={recordState === 'processing'}
-              className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-slate-950/80 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all text-sm font-semibold shadow-inner"
+              className="w-full px-4 py-3 rounded-2xl border border-[#E8D5A0] bg-[#FFF9E8] text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all text-sm font-semibold shadow-inner"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
+            <label className="block text-[11px] font-black uppercase tracking-wider text-stone-600 mb-1.5">
               Academic Subject
             </label>
             <div className="flex flex-wrap gap-2">
@@ -198,8 +198,8 @@ export function AudioRecorder() {
                   onClick={() => setSubject(sub)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                     subject === sub
-                      ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 shadow-glow-emerald font-black'
-                      : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700'
+                      ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm font-black'
+                      : 'bg-[#FFF9E8] text-stone-700 hover:bg-[#FBF1D5] border border-[#E8D5A0]'
                   }`}
                 >
                   {sub}
@@ -211,17 +211,17 @@ export function AudioRecorder() {
 
         {/* Permission Error Banner */}
         {permissionError && (
-          <div className="p-4 rounded-2xl bg-rose-950/80 border border-rose-500/40 text-rose-200 text-xs font-medium flex items-start gap-3 shadow-glow-rose">
-            <AlertTriangle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+          <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-medium flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
             <div>
               <p className="font-bold">Microphone Permission Required</p>
-              <p className="text-rose-300 mt-0.5">{permissionError}</p>
+              <p className="text-rose-700 mt-0.5">{permissionError}</p>
             </div>
           </div>
         )}
 
-        {/* Futuristic Sound Booth Terminal */}
-        <div className="p-6 rounded-3xl bg-slate-950 border border-cyan-500/30 text-white space-y-6 shadow-inner text-center relative overflow-hidden">
+        {/* Sound Booth Terminal */}
+        <div className="p-6 rounded-3xl bg-[#FFF9E8] border border-[#E8D5A0] text-stone-900 space-y-6 shadow-inner text-center relative overflow-hidden">
           <div className="flex items-center justify-between">
             <Badge
               variant={
@@ -231,7 +231,7 @@ export function AudioRecorder() {
                   ? 'warning'
                   : recordState === 'processing'
                   ? 'purple'
-                  : 'dark'
+                  : 'default'
               }
               dot
             >
@@ -239,8 +239,8 @@ export function AudioRecorder() {
             </Badge>
 
             {/* Glowing Digital Timer */}
-            <div className="flex items-center gap-2 font-mono text-xl sm:text-2xl font-black text-cyan-400">
-              <Clock className="w-5 h-5 text-cyan-400" />
+            <div className="flex items-center gap-2 font-mono text-xl sm:text-2xl font-black text-teal-800">
+              <Clock className="w-5 h-5 text-teal-700" />
               <span>{formatTime(timerSeconds)}</span>
             </div>
           </div>
@@ -251,7 +251,7 @@ export function AudioRecorder() {
               <button
                 type="button"
                 onClick={startRecording}
-                className="w-24 h-24 rounded-full bg-gradient-to-tr from-emerald-600 via-teal-500 to-cyan-400 text-slate-950 font-black flex flex-col items-center justify-center gap-1 shadow-glow-emerald cursor-pointer hover:scale-105 transition-all"
+                className="w-24 h-24 rounded-full bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-600 text-white font-black flex flex-col items-center justify-center gap-1 shadow-glow-emerald cursor-pointer hover:scale-105 transition-all"
               >
                 <Mic className="w-9 h-9" />
                 <span className="text-[10px] font-black uppercase tracking-wider">Record</span>
@@ -259,14 +259,14 @@ export function AudioRecorder() {
             )}
 
             {recordState === 'recording' && (
-              <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-rose-600 to-red-600 text-white flex flex-col items-center justify-center gap-1 animate-mic-pulse">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-rose-600 to-red-600 text-white flex flex-col items-center justify-center gap-1 animate-mic-pulse shadow-md">
                 <Mic className="w-9 h-9 animate-pulse" />
                 <span className="text-[10px] font-black uppercase tracking-wider">Live</span>
               </div>
             )}
 
             {recordState === 'paused' && (
-              <div className="w-24 h-24 rounded-full bg-amber-500 text-slate-950 font-black flex flex-col items-center justify-center gap-1 shadow-md">
+              <div className="w-24 h-24 rounded-full bg-amber-500 text-white font-black flex flex-col items-center justify-center gap-1 shadow-md">
                 <Pause className="w-9 h-9" />
                 <span className="text-[10px] font-black uppercase tracking-wider">Paused</span>
               </div>
@@ -290,11 +290,11 @@ export function AudioRecorder() {
 
         {/* Processing Stepper Display */}
         {recordState === 'processing' && (
-          <div className="p-6 bg-slate-950 border border-purple-500/40 rounded-2xl text-center space-y-3 shadow-glow-purple">
-            <Loader2 className="w-8 h-8 text-purple-400 animate-spin mx-auto" />
-            <h4 className="font-extrabold text-white text-base">Processing lecture with AI...</h4>
-            <p className="text-xs text-purple-300 max-w-md mx-auto">{processingStage}</p>
-            <div className="text-[10px] text-cyan-400 font-black uppercase tracking-widest">
+          <div className="p-6 bg-[#FFF9E8] border border-purple-300 rounded-2xl text-center space-y-3 shadow-warm-sm">
+            <Loader2 className="w-8 h-8 text-purple-600 animate-spin mx-auto" />
+            <h4 className="font-extrabold text-stone-900 text-base">Processing lecture with AI...</h4>
+            <p className="text-xs text-purple-800 max-w-md mx-auto">{processingStage}</p>
+            <div className="text-[10px] text-teal-800 font-black uppercase tracking-widest">
               Speech-to-Text → Summary → Key Points → Revision Kit → Practice Quiz
             </div>
           </div>
@@ -340,7 +340,7 @@ export function AudioRecorder() {
                   size="md"
                   icon={RotateCcw}
                   onClick={cancelRecording}
-                  className="text-slate-400 hover:text-white"
+                  className="text-stone-600 hover:text-stone-900"
                 >
                   Cancel
                 </Button>
@@ -372,7 +372,7 @@ export function AudioRecorder() {
                   size="md"
                   icon={RotateCcw}
                   onClick={cancelRecording}
-                  className="text-slate-400 hover:text-white"
+                  className="text-stone-600 hover:text-stone-900"
                 >
                   Cancel
                 </Button>

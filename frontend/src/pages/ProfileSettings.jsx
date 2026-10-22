@@ -80,22 +80,22 @@ export function ProfileSettings() {
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
       {/* Header Banner */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-950 via-slate-900 to-purple-950/40 p-6 sm:p-8 rounded-3xl text-white shadow-glass-card border border-white/10 space-y-2">
+      <div className="relative overflow-hidden bg-gradient-to-r from-amber-100/90 via-amber-50 to-orange-100/80 p-6 sm:p-8 rounded-3xl text-stone-900 shadow-warm-card border border-[#E8D5A0] space-y-2">
         <Badge variant="purple" size="md">Account & Architecture</Badge>
-        <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
+        <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-stone-900">
           System Settings & Profile
         </h1>
-        <p className="text-xs sm:text-sm text-slate-300 max-w-lg leading-relaxed font-medium">
+        <p className="text-xs sm:text-sm text-stone-600 max-w-lg leading-relaxed font-medium">
           Manage your student profile, security credentials, and view real-time AI engine status.
         </p>
       </div>
 
       {/* AI Engine Status Card */}
-      <Card className="p-6 bg-slate-900/80 border-white/10 shadow-glass-card space-y-4">
-        <div className="flex items-center justify-between border-b border-white/10 pb-3">
+      <Card className="p-6 bg-[#FFFDF5] border-[#E8D5A0] shadow-warm-card space-y-4">
+        <div className="flex items-center justify-between border-b border-[#E8D5A0]/60 pb-3">
           <div className="flex items-center gap-2.5">
-            <Cpu className="w-5 h-5 text-emerald-400" />
-            <h3 className="font-black text-white text-base">NoteFlow AI Engine Status</h3>
+            <Cpu className="w-5 h-5 text-emerald-600" />
+            <h3 className="font-black text-stone-900 text-base">NoteFlow AI Engine Status</h3>
           </div>
           <Badge variant="success" size="sm" dot>
             Operational
@@ -103,53 +103,53 @@ export function ProfileSettings() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-          <div className="p-4 rounded-2xl bg-slate-950/80 border border-white/5 space-y-1">
-            <span className="text-slate-400 font-bold">AI Language Model</span>
-            <p className="font-extrabold text-white">{systemStatus?.ai_mode || 'GPT-4o Academic Engine'}</p>
+          <div className="p-4 rounded-2xl bg-[#FFF9E8] border border-[#E8D5A0]/70 space-y-1">
+            <span className="text-stone-500 font-bold">AI Language Model</span>
+            <p className="font-extrabold text-stone-900">{systemStatus?.ai_mode || 'GPT-4o Academic Engine'}</p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-slate-950/80 border border-white/5 space-y-1">
-            <span className="text-slate-400 font-bold">Speech-to-Text Model</span>
-            <p className="font-extrabold text-white">{systemStatus?.speech_to_text || 'OpenAI Whisper API'}</p>
+          <div className="p-4 rounded-2xl bg-[#FFF9E8] border border-[#E8D5A0]/70 space-y-1">
+            <span className="text-stone-500 font-bold">Speech-to-Text Model</span>
+            <p className="font-extrabold text-stone-900">{systemStatus?.speech_to_text || 'OpenAI Whisper API'}</p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-slate-950/80 border border-white/5 space-y-1">
-            <span className="text-slate-400 font-bold">Database Persistence</span>
-            <p className="font-extrabold text-emerald-400">{systemStatus?.database || 'MySQL 8.0 & SQLite'}</p>
+          <div className="p-4 rounded-2xl bg-[#FFF9E8] border border-[#E8D5A0]/70 space-y-1">
+            <span className="text-stone-500 font-bold">Database Persistence</span>
+            <p className="font-extrabold text-emerald-700">{systemStatus?.database || 'MySQL 8.0 & SQLite'}</p>
           </div>
         </div>
       </Card>
 
       {/* Profile Info Form */}
-      <Card className="p-6 bg-slate-900/60 border-white/10 shadow-glass-card space-y-5">
-        <h3 className="font-black text-white text-base flex items-center gap-2">
-          <User className="w-4 h-4 text-cyan-400" />
+      <Card className="p-6 bg-[#FFFDF5] border-[#E8D5A0] shadow-warm-card space-y-5">
+        <h3 className="font-black text-stone-900 text-base flex items-center gap-2">
+          <User className="w-4 h-4 text-cyan-700" />
           Student Profile
         </h3>
 
         <form onSubmit={handleUpdateProfile} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-[11px] font-black uppercase tracking-wider text-stone-600 mb-1.5">
                 Full Name
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#FFF9E8] border border-[#E8D5A0] text-stone-900 placeholder:text-stone-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-[11px] font-black uppercase tracking-wider text-stone-600 mb-1.5">
                 Email Address
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#FFF9E8] border border-[#E8D5A0] text-stone-900 placeholder:text-stone-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner"
               />
             </div>
           </div>
@@ -161,7 +161,7 @@ export function ProfileSettings() {
               size="md"
               icon={Save}
               isLoading={savingProfile}
-              className="shadow-glow-emerald font-black"
+              className="shadow-warm-card font-black"
             >
               Update Profile
             </Button>
@@ -170,16 +170,16 @@ export function ProfileSettings() {
       </Card>
 
       {/* Change Password Form */}
-      <Card className="p-6 bg-slate-900/60 border-white/10 shadow-glass-card space-y-5">
-        <h3 className="font-black text-white text-base flex items-center gap-2">
-          <Lock className="w-4 h-4 text-purple-400" />
+      <Card className="p-6 bg-[#FFFDF5] border-[#E8D5A0] shadow-warm-card space-y-5">
+        <h3 className="font-black text-stone-900 text-base flex items-center gap-2">
+          <Lock className="w-4 h-4 text-purple-700" />
           Security Credentials
         </h3>
 
         <form onSubmit={handleChangePassword} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-[11px] font-black uppercase tracking-wider text-stone-600 mb-1.5">
                 Current Password
               </label>
               <input
@@ -187,12 +187,12 @@ export function ProfileSettings() {
                 placeholder="••••••••"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#FFF9E8] border border-[#E8D5A0] text-stone-900 placeholder:text-stone-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner"
               />
             </div>
 
             <div>
-              <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
+              <label className="block text-[11px] font-black uppercase tracking-wider text-stone-600 mb-1.5">
                 New Password
               </label>
               <input
@@ -200,7 +200,7 @@ export function ProfileSettings() {
                 placeholder="••••••••"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl bg-slate-950 border border-white/10 text-white text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner"
+                className="w-full px-4 py-2.5 rounded-xl bg-[#FFF9E8] border border-[#E8D5A0] text-stone-900 placeholder:text-stone-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner"
               />
             </div>
           </div>
@@ -213,7 +213,7 @@ export function ProfileSettings() {
               icon={Save}
               isLoading={savingPassword}
               disabled={!currentPassword || !newPassword}
-              className="shadow-glow-purple font-black"
+              className="shadow-warm-card font-black"
             >
               Update Password
             </Button>

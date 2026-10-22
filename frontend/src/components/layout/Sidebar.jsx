@@ -24,7 +24,7 @@ import { AIAssistantModal } from '../ai/AIAssistantModal';
 
 export function Sidebar({ isOpen, onClose }) {
   const location = useLocation();
-  const { user, demoMode } = useAuth();
+  const { user } = useAuth();
   const [isAIChatOpen, setIsAIChatOpen] = useState(false);
 
   const mainNav = [
@@ -50,47 +50,34 @@ export function Sidebar({ isOpen, onClose }) {
       {/* Mobile Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-40 lg:hidden transition-opacity"
+          className="fixed inset-0 bg-stone-900/40 backdrop-blur-sm z-40 lg:hidden transition-opacity"
           onClick={onClose}
         />
       )}
 
       <aside
-        className={`fixed top-0 left-0 bottom-0 z-40 w-64 bg-slate-950/90 backdrop-blur-2xl border-r border-white/10 flex flex-col transition-all duration-300 ease-out lg:translate-x-0 ${
+        className={`fixed top-0 left-0 bottom-0 z-40 w-64 bg-[#FFFDF5]/95 backdrop-blur-2xl border-r border-[#E8D5A0]/60 flex flex-col transition-all duration-300 ease-out lg:translate-x-0 ${
           isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
         }`}
       >
         {/* Brand Header */}
-        <div className="h-16 flex items-center justify-between px-6 border-b border-white/10 bg-white/[0.01]">
-          <NavLink to="/dashboard" className="flex items-center gap-3 font-black text-lg text-white tracking-tight group">
-            <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-400 flex items-center justify-center text-slate-950 shadow-glow-emerald group-hover:scale-105 transition-transform font-bold">
-              <GraduationCap className="w-5 h-5 text-slate-950" />
+        <div className="h-16 flex items-center justify-between px-6 border-b border-[#E8D5A0]/60 bg-[#FFF9E8]/40">
+          <NavLink to="/dashboard" className="flex items-center gap-3 font-black text-lg text-stone-900 tracking-tight group">
+            <div className="w-9 h-9 rounded-2xl bg-gradient-to-tr from-emerald-600 via-teal-600 to-cyan-600 flex items-center justify-center text-white shadow-glow-emerald group-hover:scale-105 transition-transform font-bold">
+              <GraduationCap className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="leading-none text-white font-black text-base">NoteFlow <span className="text-emerald-400">AI</span></span>
-              <span className="text-[9px] text-slate-400 font-extrabold tracking-widest uppercase mt-0.5">Study System</span>
+              <span className="leading-none text-stone-900 font-black text-base">NoteFlow <span className="text-emerald-600">AI</span></span>
+              <span className="text-[9px] text-stone-500 font-extrabold tracking-widest uppercase mt-0.5">Study System</span>
             </div>
           </NavLink>
         </div>
 
-        {/* Demo Mode Notification Badge */}
-        {demoMode && (
-          <div className="mx-3 mt-3 p-2.5 bg-gradient-to-r from-emerald-950/80 to-teal-950/80 border border-emerald-500/40 rounded-2xl flex items-center gap-2.5 text-xs text-emerald-200 shadow-glow-emerald">
-            <div className="w-6 h-6 rounded-lg bg-emerald-500/30 text-emerald-300 flex items-center justify-center shrink-0">
-              <Zap className="w-3.5 h-3.5" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="font-extrabold text-[11px] leading-tight text-white">Interactive Demo Active</div>
-              <div className="text-[10px] text-emerald-300/80 truncate">4 preloaded study suites ready</div>
-            </div>
-          </div>
-        )}
-
         {/* Navigation Scroll Area */}
-        <nav className="flex-1 px-3 py-3 space-y-4 overflow-y-auto">
+        <nav className="flex-1 px-3 py-4 space-y-4 overflow-y-auto">
           {/* MAIN SECTION */}
           <div className="space-y-1">
-            <div className="px-3 pb-1 text-[10px] font-black uppercase tracking-wider text-slate-400">
+            <div className="px-3 pb-1 text-[10px] font-black uppercase tracking-wider text-stone-500">
               Main Studio
             </div>
             {mainNav.map((item) => {
@@ -103,14 +90,14 @@ export function Sidebar({ isOpen, onClose }) {
                   onClick={onClose}
                   className={`flex items-center justify-between px-3 py-2.5 rounded-2xl text-xs font-bold transition-all duration-200 group ${
                     isActive
-                      ? 'bg-gradient-to-r from-emerald-500/20 to-teal-500/10 text-emerald-300 border border-emerald-500/40 shadow-glow-emerald'
-                      : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                      ? 'bg-emerald-100/70 text-emerald-900 border border-emerald-400/50 shadow-sm'
+                      : 'text-stone-600 hover:bg-[#FFF9E8] hover:text-stone-900'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <Icon
                       className={`w-4 h-4 transition-colors ${
-                        isActive ? 'text-emerald-400' : 'text-slate-400 group-hover:text-white'
+                        isActive ? 'text-emerald-700' : 'text-stone-500 group-hover:text-stone-800'
                       }`}
                     />
                     <span>{item.name}</span>
@@ -127,7 +114,7 @@ export function Sidebar({ isOpen, onClose }) {
 
           {/* STUDY SECTION */}
           <div className="space-y-1">
-            <div className="px-3 pb-1 text-[10px] font-black uppercase tracking-wider text-slate-400">
+            <div className="px-3 pb-1 text-[10px] font-black uppercase tracking-wider text-stone-500">
               Smart Study
             </div>
             {studyNav.map((item) => {
@@ -140,20 +127,20 @@ export function Sidebar({ isOpen, onClose }) {
                   onClick={onClose}
                   className={`flex items-center justify-between px-3 py-2 rounded-2xl text-xs font-bold transition-all duration-200 group ${
                     isActive
-                      ? 'bg-gradient-to-r from-emerald-500/20 to-teal-500/10 text-emerald-300 border border-emerald-500/40 shadow-glow-emerald'
-                      : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                      ? 'bg-emerald-100/70 text-emerald-900 border border-emerald-400/50 shadow-sm'
+                      : 'text-stone-600 hover:bg-[#FFF9E8] hover:text-stone-900'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <Icon
                       className={`w-4 h-4 transition-colors ${
-                        isActive ? 'text-emerald-400' : 'text-slate-400 group-hover:text-white'
+                        isActive ? 'text-emerald-700' : 'text-stone-500 group-hover:text-stone-800'
                       }`}
                     />
                     <span>{item.name}</span>
                   </div>
                   {isActive && (
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-glow-emerald" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-600 shadow-sm" />
                   )}
                 </NavLink>
               );
@@ -162,19 +149,19 @@ export function Sidebar({ isOpen, onClose }) {
 
           {/* TOOLS & COPILOT */}
           <div className="space-y-1">
-            <div className="px-3 pb-1 text-[10px] font-black uppercase tracking-wider text-slate-400">
+            <div className="px-3 pb-1 text-[10px] font-black uppercase tracking-wider text-stone-500">
               AI Tools
             </div>
             <button
               type="button"
               onClick={() => setIsAIChatOpen(true)}
-              className="w-full flex items-center justify-between px-3 py-2 rounded-2xl text-xs font-bold text-purple-300 hover:bg-purple-950/40 border border-purple-500/30 shadow-glow-purple transition-all group"
+              className="w-full flex items-center justify-between px-3 py-2 rounded-2xl text-xs font-bold text-purple-900 bg-purple-50/80 hover:bg-purple-100 border border-purple-300 shadow-sm transition-all group cursor-pointer"
             >
               <div className="flex items-center gap-2.5">
-                <Bot className="w-4 h-4 text-purple-400 group-hover:rotate-12 transition-transform" />
+                <Bot className="w-4 h-4 text-purple-600 group-hover:rotate-12 transition-transform" />
                 <span>AI Study Copilot</span>
               </div>
-              <span className="text-[9px] px-1.5 py-0.5 rounded bg-purple-500/30 text-purple-200 font-extrabold">
+              <span className="text-[9px] px-1.5 py-0.5 rounded bg-purple-200 text-purple-800 font-extrabold">
                 Ask
               </span>
             </button>
@@ -189,14 +176,14 @@ export function Sidebar({ isOpen, onClose }) {
                   onClick={onClose}
                   className={`flex items-center justify-between px-3 py-2 rounded-2xl text-xs font-bold transition-all duration-200 group ${
                     isActive
-                      ? 'bg-gradient-to-r from-emerald-500/20 to-teal-500/10 text-emerald-300 border border-emerald-500/40 shadow-glow-emerald'
-                      : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                      ? 'bg-emerald-100/70 text-emerald-900 border border-emerald-400/50 shadow-sm'
+                      : 'text-stone-600 hover:bg-[#FFF9E8] hover:text-stone-900'
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
                     <Icon
                       className={`w-4 h-4 transition-colors ${
-                        isActive ? 'text-emerald-400' : 'text-slate-400 group-hover:text-white'
+                        isActive ? 'text-emerald-700' : 'text-stone-500 group-hover:text-stone-800'
                       }`}
                     />
                     <span>{item.name}</span>
@@ -209,35 +196,35 @@ export function Sidebar({ isOpen, onClose }) {
 
         {/* Study Streak Badge */}
         <div className="px-3 py-2">
-          <div className="p-3 rounded-2xl bg-slate-900/80 border border-white/10 text-white space-y-1.5 shadow-glass-card">
+          <div className="p-3 rounded-2xl bg-[#FFF9E8] border border-[#E8D5A0] text-stone-900 space-y-1.5 shadow-warm-sm">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-extrabold flex items-center gap-1 text-emerald-400">
-                <Flame className="w-3.5 h-3.5 text-amber-400 fill-current" />
+              <span className="font-extrabold flex items-center gap-1 text-emerald-800">
+                <Flame className="w-3.5 h-3.5 text-amber-500 fill-current" />
                 5-Day Streak
               </span>
-              <span className="text-[10px] text-slate-400 font-mono">100% Goal</span>
+              <span className="text-[10px] text-stone-500 font-mono">100% Goal</span>
             </div>
-            <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
-              <div className="bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 h-1.5 rounded-full w-4/5" />
+            <div className="w-full bg-[#E8D5A0]/40 rounded-full h-1.5 overflow-hidden">
+              <div className="bg-gradient-to-r from-emerald-500 to-teal-500 h-1.5 rounded-full w-4/5" />
             </div>
           </div>
         </div>
 
         {/* Bottom User Card */}
-        <div className="p-3 border-t border-white/10 bg-white/[0.02]">
+        <div className="p-3 border-t border-[#E8D5A0]/60 bg-[#FFF9E8]/40">
           <NavLink
             to="/settings"
             onClick={onClose}
-            className="flex items-center gap-3 p-2 rounded-2xl hover:bg-white/5 transition-all border border-transparent hover:border-white/10 shadow-xs"
+            className="flex items-center gap-3 p-2 rounded-2xl hover:bg-[#FFFDF5] transition-all border border-transparent hover:border-[#E8D5A0]"
           >
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-slate-950 font-black text-xs flex items-center justify-center shadow-glow-emerald">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 text-white font-black text-xs flex items-center justify-center shadow-sm">
               {user?.name ? user.name.charAt(0).toUpperCase() : 'A'}
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs font-bold text-white truncate">{user?.name || 'Alex Vance'}</p>
-              <p className="text-[10px] text-slate-400 truncate">{user?.email || 'student@noteflow.ai'}</p>
+              <p className="text-xs font-bold text-stone-900 truncate">{user?.name || 'Alex Vance'}</p>
+              <p className="text-[10px] text-stone-500 truncate">{user?.email || 'student@noteflow.ai'}</p>
             </div>
-            <Settings className="w-4 h-4 text-slate-400 hover:text-white" />
+            <Settings className="w-4 h-4 text-stone-400 hover:text-stone-700" />
           </NavLink>
         </div>
       </aside>

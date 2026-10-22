@@ -150,13 +150,13 @@ export function MyNotes() {
   return (
     <div className="space-y-8">
       {/* Header Banner */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-950 via-purple-950/40 to-slate-950 p-6 sm:p-8 rounded-3xl text-white shadow-glass-card border border-white/10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div className="relative overflow-hidden bg-[#FFFDF5] p-6 sm:p-8 rounded-3xl text-stone-900 shadow-warm-card border border-[#E8D5A0] flex flex-col md:flex-row md:items-center justify-between gap-6">
         <div className="space-y-2">
           <Badge variant="primary" size="md">Study Notes Library</Badge>
-          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
+          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-stone-900">
             Smart Notes & Summaries
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-lg leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-stone-600 max-w-lg leading-relaxed font-medium">
             Search, filter, edit, and organize all lecture notes and customized study sheets in one workspace.
           </p>
         </div>
@@ -176,13 +176,13 @@ export function MyNotes() {
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Search */}
         <div className="relative w-full sm:w-80">
-          <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
             placeholder="Search notes, formulas, tags..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-slate-900 border border-white/10 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all shadow-inner"
+            className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-[#FFFDF5] border border-[#E8D5A0] text-stone-900 placeholder:text-stone-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all shadow-inner"
           />
         </div>
 
@@ -192,10 +192,10 @@ export function MyNotes() {
             <button
               key={sub}
               onClick={() => setSelectedSubject(sub)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all whitespace-nowrap cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all whitespace-nowrap cursor-pointer border ${
                 selectedSubject === sub
-                  ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 shadow-glow-emerald'
-                  : 'bg-slate-900/80 border border-white/10 text-slate-400 hover:text-white'
+                  ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white border-emerald-500 shadow-sm'
+                  : 'bg-[#FFFDF5] border-[#E8D5A0] text-stone-700 hover:text-stone-900 hover:bg-[#FFF9E8]'
               }`}
             >
               {sub}
@@ -204,10 +204,10 @@ export function MyNotes() {
 
           <button
             onClick={() => setOnlyFavorites((prev) => !prev)}
-            className={`p-2 rounded-xl text-xs font-bold transition-all border ${
+            className={`p-2 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
               onlyFavorites
-                ? 'bg-amber-950/80 text-amber-300 border-amber-500/40 shadow-glow-rose'
-                : 'bg-slate-900/80 text-slate-400 border-white/10 hover:text-white'
+                ? 'bg-amber-100 text-amber-800 border-amber-300'
+                : 'bg-[#FFFDF5] text-stone-400 border-[#E8D5A0] hover:text-stone-700'
             }`}
             title="Show only favorites"
           >

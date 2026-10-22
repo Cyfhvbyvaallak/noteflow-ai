@@ -15,7 +15,7 @@ export function NoteCard({ note, onEdit, onDelete, onToggleFavorite }) {
     : [];
 
   return (
-    <Card hoverEffect className="p-5 flex flex-col justify-between h-full bg-slate-900/60 border-white/10 group">
+    <Card hoverEffect className="p-5 flex flex-col justify-between h-full bg-[#FFFDF5] border-[#E8D5A0] group">
       <div>
         {/* Header with subject & favorite toggle */}
         <div className="flex items-start justify-between gap-2 mb-3">
@@ -24,10 +24,10 @@ export function NoteCard({ note, onEdit, onDelete, onToggleFavorite }) {
           </Badge>
           <button
             onClick={() => onToggleFavorite(note.id)}
-            className={`p-1 rounded-lg transition-colors ${
+            className={`p-1 rounded-lg transition-colors cursor-pointer ${
               note.is_favorite
-                ? 'text-amber-400 hover:text-amber-300'
-                : 'text-slate-600 hover:text-amber-400'
+                ? 'text-amber-500 hover:text-amber-600'
+                : 'text-stone-300 hover:text-amber-500'
             }`}
           >
             <Star className={`w-4 h-4 ${note.is_favorite ? 'fill-current' : ''}`} />
@@ -35,12 +35,12 @@ export function NoteCard({ note, onEdit, onDelete, onToggleFavorite }) {
         </div>
 
         {/* Note Title */}
-        <h4 className="font-black text-white text-base mb-2 group-hover:text-cyan-300 transition-colors line-clamp-1">
+        <h4 className="font-black text-stone-900 text-base mb-2 group-hover:text-emerald-700 transition-colors line-clamp-1">
           {note.title}
         </h4>
 
         {/* Note snippet preview */}
-        <p className="text-xs sm:text-sm text-slate-400 line-clamp-4 leading-relaxed mb-4 font-medium">
+        <p className="text-xs sm:text-sm text-stone-600 line-clamp-4 leading-relaxed mb-4 font-medium">
           {note.content.replace(/[#*`$]/g, '')}
         </p>
 
@@ -50,7 +50,7 @@ export function NoteCard({ note, onEdit, onDelete, onToggleFavorite }) {
             {tagList.map((tag, idx) => (
               <span
                 key={idx}
-                className="inline-flex items-center text-[10px] font-bold px-2 py-0.5 bg-slate-800 text-cyan-300 rounded-md border border-white/5"
+                className="inline-flex items-center text-[10px] font-bold px-2 py-0.5 bg-[#FFF9E8] text-teal-800 rounded-md border border-[#E8D5A0]"
               >
                 #{tag}
               </span>
@@ -60,23 +60,23 @@ export function NoteCard({ note, onEdit, onDelete, onToggleFavorite }) {
       </div>
 
       {/* Card Footer with date & actions */}
-      <div className="pt-3 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+      <div className="pt-3 border-t border-[#E8D5A0]/60 flex items-center justify-between text-xs text-stone-500">
         <div className="flex items-center gap-1.5">
-          <Calendar className="w-3.5 h-3.5 text-slate-500" />
+          <Calendar className="w-3.5 h-3.5 text-stone-400" />
           <span>{formatDate(note.updated_at || note.created_at)}</span>
         </div>
 
         <div className="flex items-center gap-1">
           <button
             onClick={() => onEdit(note)}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-cyan-300 hover:bg-white/5 transition-colors"
+            className="p-1.5 rounded-lg text-stone-400 hover:text-stone-800 hover:bg-[#FBF1D5] transition-colors cursor-pointer"
             title="Edit Note"
           >
             <Edit3 className="w-3.5 h-3.5" />
           </button>
           <button
             onClick={() => onDelete(note.id)}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
+            className="p-1.5 rounded-lg text-stone-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
             title="Delete Note"
           >
             <Trash2 className="w-3.5 h-3.5" />

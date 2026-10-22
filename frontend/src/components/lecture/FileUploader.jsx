@@ -159,13 +159,13 @@ export function FileUploader() {
   };
 
   return (
-    <Card className="max-w-3xl mx-auto overflow-hidden shadow-glass-card border-white/10 bg-slate-900/80 backdrop-blur-2xl">
+    <Card className="max-w-3xl mx-auto overflow-hidden shadow-warm-card border-[#E8D5A0]/80 bg-[#FFFDF5]">
       <form onSubmit={handleUploadAndProcess} className="p-6 sm:p-8 space-y-6">
         {/* Title and Subject */}
         <div className="space-y-4">
           <div>
-            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
-              Lecture Title <span className="text-rose-400">*</span>
+            <label className="block text-[11px] font-black uppercase tracking-wider text-stone-600 mb-1.5">
+              Lecture Title <span className="text-rose-500">*</span>
             </label>
             <input
               type="text"
@@ -173,12 +173,12 @@ export function FileUploader() {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               disabled={uploading}
-              className="w-full px-4 py-3 rounded-2xl border border-white/10 bg-slate-950/80 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all text-sm font-semibold shadow-inner"
+              className="w-full px-4 py-3 rounded-2xl border border-[#E8D5A0] bg-[#FFF9E8] text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all text-sm font-semibold shadow-inner"
             />
           </div>
 
           <div>
-            <label className="block text-[11px] font-black uppercase tracking-wider text-slate-400 mb-1.5">
+            <label className="block text-[11px] font-black uppercase tracking-wider text-stone-600 mb-1.5">
               Academic Subject
             </label>
             <div className="flex flex-wrap gap-2">
@@ -190,8 +190,8 @@ export function FileUploader() {
                   disabled={uploading}
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                     subject === sub
-                      ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 shadow-glow-emerald font-black'
-                      : 'bg-slate-800/80 text-slate-300 hover:bg-slate-700'
+                      ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm font-black'
+                      : 'bg-[#FFF9E8] text-stone-700 hover:bg-[#FBF1D5] border border-[#E8D5A0]'
                   }`}
                 >
                   {sub}
@@ -201,7 +201,7 @@ export function FileUploader() {
           </div>
         </div>
 
-        {/* 3D Glass Drag-and-Drop Area */}
+        {/* Drag-and-Drop Area */}
         {!selectedFile ? (
           <div
             onDragEnter={handleDrag}
@@ -211,8 +211,8 @@ export function FileUploader() {
             onClick={() => fileInputRef.current?.click()}
             className={`border-2 border-dashed rounded-3xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-300 flex flex-col items-center justify-center ${
               dragActive
-                ? 'border-cyan-400 bg-cyan-950/40 scale-[1.01] shadow-glow-cyan'
-                : 'border-white/15 hover:border-cyan-400/60 bg-slate-950/60 hover:bg-slate-950/90'
+                ? 'border-teal-500 bg-teal-50 scale-[1.01] shadow-warm-card'
+                : 'border-[#E8D5A0] hover:border-teal-500 bg-[#FFF9E8] hover:bg-[#FFFDF5]'
             }`}
           >
             <input
@@ -222,13 +222,13 @@ export function FileUploader() {
               onChange={handleFileInput}
               className="hidden"
             />
-            <div className="w-16 h-16 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 flex items-center justify-center mb-4 shadow-glow-cyan">
+            <div className="w-16 h-16 rounded-2xl bg-teal-50 border border-teal-300 text-teal-700 flex items-center justify-center mb-4 shadow-sm">
               <UploadCloud className="w-8 h-8" />
             </div>
-            <h4 className="text-base sm:text-lg font-black text-white tracking-tight mb-1">
+            <h4 className="text-base sm:text-lg font-black text-stone-900 tracking-tight mb-1">
               Drop your lecture file here
             </h4>
-            <p className="text-xs text-slate-400 max-w-sm mb-4 leading-relaxed font-medium">
+            <p className="text-xs text-stone-500 max-w-sm mb-4 leading-relaxed font-medium">
               Audio recordings (MP3/WAV/M4A), Video (MP4), or presentation slide decks (PDF).
             </p>
             <div className="flex flex-wrap items-center justify-center gap-2">
@@ -241,21 +241,21 @@ export function FileUploader() {
           </div>
         ) : (
           /* Selected File Card */
-          <div className="p-5 rounded-2xl bg-slate-950 border border-cyan-500/40 flex items-center justify-between gap-4 shadow-glow-cyan">
+          <div className="p-5 rounded-2xl bg-[#FFF9E8] border border-teal-300 flex items-center justify-between gap-4 shadow-sm">
             <div className="flex items-center gap-3.5 min-w-0">
               {React.createElement(getFileIcon(selectedFile.name), {
-                className: 'w-8 h-8 text-cyan-400 shrink-0'
+                className: 'w-8 h-8 text-teal-700 shrink-0'
               })}
               <div className="min-w-0">
-                <p className="text-sm font-black text-white truncate">{selectedFile.name}</p>
-                <p className="text-xs text-slate-400 font-mono">{formatFileSize(selectedFile.size)}</p>
+                <p className="text-sm font-black text-stone-900 truncate">{selectedFile.name}</p>
+                <p className="text-xs text-stone-500 font-mono">{formatFileSize(selectedFile.size)}</p>
               </div>
             </div>
             {!uploading && (
               <button
                 type="button"
                 onClick={removeFile}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
+                className="p-1.5 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-[#FBF1D5] transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -265,10 +265,10 @@ export function FileUploader() {
 
         {/* Upload & AI Pipeline Progress Indicator */}
         {uploading && (
-          <div className="p-6 rounded-2xl bg-slate-950 border border-purple-500/40 text-white space-y-4 shadow-glow-purple">
-            <div className="flex items-center justify-between text-xs font-bold text-purple-300">
+          <div className="p-6 rounded-2xl bg-[#FFF9E8] border border-purple-300 text-stone-900 space-y-4 shadow-warm-sm">
+            <div className="flex items-center justify-between text-xs font-bold text-purple-800">
               <div className="flex items-center gap-2">
-                <Loader2 className="w-4 h-4 animate-spin text-purple-400" />
+                <Loader2 className="w-4 h-4 animate-spin text-purple-600" />
                 <span>{stage}</span>
               </div>
               <span className="font-mono text-sm">{uploadProgress}%</span>

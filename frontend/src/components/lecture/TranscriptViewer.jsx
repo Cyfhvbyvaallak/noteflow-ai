@@ -59,7 +59,7 @@ export function TranscriptViewer({ transcriptText = '', lectureTitle = 'Lecture'
 
     return parts.map((part, i) =>
       regex.test(part) ? (
-        <mark key={i} className="bg-cyan-500 text-slate-950 px-1 py-0.5 rounded font-black shadow-glow-cyan">
+        <mark key={i} className="bg-amber-200 text-stone-950 px-1 py-0.5 rounded font-black border border-amber-300">
           {part}
         </mark>
       ) : (
@@ -69,29 +69,29 @@ export function TranscriptViewer({ transcriptText = '', lectureTitle = 'Lecture'
   };
 
   return (
-    <Card className="bg-slate-900/70 border-white/10 shadow-glass-card">
+    <Card className="bg-[#FFFDF5] border-[#E8D5A0] shadow-warm-card">
       {/* Viewer Header with Search and Actions */}
-      <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10">
+      <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E8D5A0]/60">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 flex items-center justify-center shadow-glow-cyan">
+          <div className="w-10 h-10 rounded-2xl bg-teal-50 border border-teal-300 text-teal-700 flex items-center justify-center shadow-sm">
             <FileText className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-base font-black text-white">Full Speech-to-Text Transcript</h3>
-            <p className="text-xs text-slate-400">Verbatim lecture audio conversion</p>
+            <h3 className="text-base font-black text-stone-900">Full Speech-to-Text Transcript</h3>
+            <p className="text-xs text-stone-500">Verbatim lecture audio conversion</p>
           </div>
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
           {/* Search Box */}
           <div className="relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               placeholder="Search transcript..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 pr-3 py-1.5 rounded-xl text-xs bg-slate-950 border border-white/10 text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all w-44 sm:w-56 shadow-inner"
+              className="pl-9 pr-3 py-1.5 rounded-xl text-xs bg-[#FFF9E8] border border-[#E8D5A0] text-stone-900 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all w-44 sm:w-56 shadow-inner"
             />
           </div>
 
@@ -142,10 +142,10 @@ export function TranscriptViewer({ transcriptText = '', lectureTitle = 'Lecture'
             value={editableText}
             onChange={(e) => setEditableText(e.target.value)}
             rows={18}
-            className="w-full p-4 rounded-2xl border border-cyan-500/40 bg-slate-950 font-mono text-xs sm:text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition-all leading-relaxed shadow-inner"
+            className="w-full p-4 rounded-2xl border border-teal-300 bg-[#FFF9E8] font-mono text-xs sm:text-sm text-stone-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all leading-relaxed shadow-inner"
           />
         ) : (
-          <div className="p-4 rounded-2xl bg-slate-950/80 border border-white/5 font-mono text-xs sm:text-sm text-slate-300 leading-relaxed max-h-[500px] overflow-y-auto whitespace-pre-wrap select-text">
+          <div className="p-4 rounded-2xl bg-[#FFF9E8] border border-[#E8D5A0]/80 font-mono text-xs sm:text-sm text-stone-800 leading-relaxed max-h-[500px] overflow-y-auto whitespace-pre-wrap select-text">
             {renderHighlightedText(transcriptText)}
           </div>
         )}

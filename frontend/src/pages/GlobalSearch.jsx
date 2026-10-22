@@ -72,24 +72,24 @@ export function GlobalSearch() {
   return (
     <div className="space-y-8">
       {/* Header Search Command Bar */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-950 via-purple-950/40 to-slate-950 p-6 sm:p-8 rounded-3xl text-white shadow-glass-card border border-white/10 space-y-4">
+      <div className="relative overflow-hidden bg-[#FFFDF5] p-6 sm:p-8 rounded-3xl text-stone-900 shadow-warm-card border border-[#E8D5A0] space-y-4">
         <Badge variant="primary" size="md">Command-Palette Global Search</Badge>
-        <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
+        <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-stone-900">
           Instant Cross-Resource Search
         </h1>
-        <p className="text-xs sm:text-sm text-slate-300 max-w-xl leading-relaxed font-medium">
+        <p className="text-xs sm:text-sm text-stone-600 max-w-xl leading-relaxed font-medium">
           Locate concepts, timestamps, definitions, formulas, and quiz questions in milliseconds across your entire degree.
         </p>
 
-        {/* Big Search Input */}
+        {/* Search Input */}
         <form onSubmit={handleSearchSubmit} className="relative pt-2">
-          <Search className="w-5 h-5 text-cyan-400 absolute left-4 top-1/2 -translate-y-1/2 mt-1" />
+          <Search className="w-5 h-5 text-teal-600 absolute left-4 top-1/2 -translate-y-1/2 mt-1" />
           <input
             type="text"
             placeholder="Search equations, definitions, keywords (e.g. 'Raft', 'Schrödinger', 'ATP', 'Eigenvalues')..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full pl-12 pr-28 py-4 rounded-2xl bg-slate-900 border border-white/15 text-white placeholder:text-slate-500 font-bold text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-cyan-500 shadow-inner"
+            className="w-full pl-12 pr-28 py-4 rounded-2xl bg-[#FFF9E8] border border-[#E8D5A0] text-stone-900 placeholder:text-stone-400 font-bold text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-500 shadow-inner"
           />
           <Button
             type="submit"
@@ -111,8 +111,8 @@ export function GlobalSearch() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 rounded-xl text-xs font-black transition-all whitespace-nowrap cursor-pointer border ${
                 activeCategory === cat.id
-                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 shadow-glow-cyan border-cyan-400'
-                  : 'bg-slate-900/80 border-white/10 text-slate-400 hover:text-white'
+                  ? 'bg-gradient-to-r from-teal-600 to-cyan-600 text-white shadow-sm border-teal-500'
+                  : 'bg-[#FFFDF5] border-[#E8D5A0] text-stone-700 hover:text-stone-900 hover:bg-[#FFF9E8]'
               }`}
             >
               {cat.label} {cat.count !== undefined ? `(${cat.count})` : ''}
@@ -129,7 +129,7 @@ export function GlobalSearch() {
           <LoadingSkeleton className="h-24 w-full rounded-2xl" />
         </div>
       ) : !results ? (
-        <div className="p-12 text-center text-slate-500 text-xs">
+        <div className="p-12 text-center text-stone-500 text-xs">
           Type a search term above to scan all lectures, notes, transcripts, and quizzes.
         </div>
       ) : results.total_results === 0 ? (
@@ -147,18 +147,18 @@ export function GlobalSearch() {
                 key={lec.id}
                 hoverEffect
                 onClick={() => navigate(`/lectures/${lec.id}`)}
-                className="p-5 bg-slate-900/60 border-white/10 flex items-center justify-between gap-4 cursor-pointer group"
+                className="p-5 bg-[#FFFDF5] border-[#E8D5A0] flex items-center justify-between gap-4 cursor-pointer group shadow-warm-sm"
               >
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <Badge variant="primary" size="sm">{lec.subject}</Badge>
-                    <span className="text-xs text-slate-400">Lecture Record</span>
+                    <span className="text-xs text-stone-500">Lecture Record</span>
                   </div>
-                  <h4 className="font-bold text-white text-base group-hover:text-cyan-300 transition-colors">
+                  <h4 className="font-bold text-stone-900 text-base group-hover:text-teal-700 transition-colors">
                     {lec.title}
                   </h4>
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-white" />
+                <ArrowRight className="w-4 h-4 text-stone-400 group-hover:text-stone-900" />
               </Card>
             ))}
 
@@ -169,13 +169,13 @@ export function GlobalSearch() {
                 key={idx}
                 hoverEffect
                 onClick={() => navigate(`/lectures/${t.lecture_id}?tab=transcript`)}
-                className="p-5 bg-slate-900/60 border-white/10 space-y-2 cursor-pointer group"
+                className="p-5 bg-[#FFFDF5] border-[#E8D5A0] space-y-2 cursor-pointer group shadow-warm-sm"
               >
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-cyan-400">{t.lecture_title}</span>
+                  <span className="font-bold text-teal-800">{t.lecture_title}</span>
                   <Badge variant="info" size="sm">Transcript Match</Badge>
                 </div>
-                <p className="text-xs text-slate-300 font-mono line-clamp-2 leading-relaxed bg-slate-950 p-2.5 rounded-xl border border-white/5">
+                <p className="text-xs text-stone-700 font-mono line-clamp-2 leading-relaxed bg-[#FFF9E8] p-2.5 rounded-xl border border-[#E8D5A0]">
                   "...{t.snippet}..."
                 </p>
               </Card>
@@ -188,13 +188,13 @@ export function GlobalSearch() {
                 key={n.id}
                 hoverEffect
                 onClick={() => navigate('/notes')}
-                className="p-5 bg-slate-900/60 border-white/10 space-y-1.5 cursor-pointer group"
+                className="p-5 bg-[#FFFDF5] border-[#E8D5A0] space-y-1.5 cursor-pointer group shadow-warm-sm"
               >
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-white group-hover:text-emerald-400 transition-colors">{n.title}</span>
+                  <span className="font-bold text-stone-900 group-hover:text-emerald-700 transition-colors">{n.title}</span>
                   <Badge variant="success" size="sm">Note</Badge>
                 </div>
-                <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed">
                   {n.snippet.replace(/[#*`$]/g, '')}
                 </p>
               </Card>
@@ -207,13 +207,13 @@ export function GlobalSearch() {
                 key={idx}
                 hoverEffect
                 onClick={() => navigate(`/quizzes/${q.quiz_id}`)}
-                className="p-5 bg-slate-900/60 border-white/10 space-y-2 cursor-pointer group"
+                className="p-5 bg-[#FFFDF5] border-[#E8D5A0] space-y-2 cursor-pointer group shadow-warm-sm"
               >
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-bold text-purple-300">{q.quiz_title}</span>
+                  <span className="font-bold text-purple-800">{q.quiz_title}</span>
                   <Badge variant="purple" size="sm">Quiz Question</Badge>
                 </div>
-                <p className="text-xs sm:text-sm font-bold text-white">
+                <p className="text-xs sm:text-sm font-bold text-stone-900">
                   Q: {q.question}
                 </p>
               </Card>

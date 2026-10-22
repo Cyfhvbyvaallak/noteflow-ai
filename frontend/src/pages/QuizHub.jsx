@@ -46,25 +46,25 @@ export function QuizHub() {
   return (
     <div className="space-y-8">
       {/* Header Banner */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-slate-950 via-purple-950/40 to-slate-950 p-6 sm:p-8 rounded-3xl text-white shadow-glass-card border border-white/10 space-y-2">
+      <div className="relative overflow-hidden bg-[#FFFDF5] p-6 sm:p-8 rounded-3xl text-stone-900 shadow-warm-card border border-[#E8D5A0] space-y-2">
         <Badge variant="purple" size="md">Active Recall Testing</Badge>
-        <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white">
+        <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-stone-900">
           Practice Quiz Hub
         </h1>
-        <p className="text-xs sm:text-sm text-slate-300 max-w-lg leading-relaxed font-medium">
+        <p className="text-xs sm:text-sm text-stone-600 max-w-lg leading-relaxed font-medium">
           Self-test your conceptual mastery with AI practice quizzes generated strictly from lecture speech transcripts.
         </p>
       </div>
 
       {/* Search Bar */}
       <div className="relative max-w-md">
-        <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+        <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
         <input
           type="text"
           placeholder="Search quizzes by course or title..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-slate-900 border border-white/10 text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner"
+          className="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-[#FFFDF5] border border-[#E8D5A0] text-stone-900 placeholder:text-stone-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 shadow-inner"
         />
       </div>
 
@@ -89,27 +89,27 @@ export function QuizHub() {
             <Card
               key={quiz.id}
               hoverEffect
-              className="p-6 bg-slate-900/60 border-white/10 flex flex-col justify-between space-y-4 group shadow-2xs"
+              className="p-6 bg-[#FFFDF5] border-[#E8D5A0] flex flex-col justify-between space-y-4 group shadow-warm-sm"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <Badge variant="purple" size="sm">
                     {quiz.subject || 'Lecture Quiz'}
                   </Badge>
-                  <span className="text-xs font-mono text-purple-300 font-bold">5 Questions</span>
+                  <span className="text-xs font-mono text-purple-800 font-bold">5 Questions</span>
                 </div>
 
-                <h3 className="font-black text-white text-base group-hover:text-purple-300 transition-colors">
+                <h3 className="font-black text-stone-900 text-base group-hover:text-purple-800 transition-colors">
                   {quiz.title}
                 </h3>
 
-                <p className="text-xs text-slate-400 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-stone-600 line-clamp-2 leading-relaxed">
                   Factually grounded multiple choice test assessing understanding of key lecture principles.
                 </p>
               </div>
 
-              <div className="pt-3 border-t border-white/5 flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-bold">
+              <div className="pt-3 border-t border-[#E8D5A0]/60 flex items-center justify-between">
+                <div className="flex items-center gap-1.5 text-xs text-emerald-700 font-bold">
                   <Trophy className="w-3.5 h-3.5" />
                   <span>Instant Grading</span>
                 </div>

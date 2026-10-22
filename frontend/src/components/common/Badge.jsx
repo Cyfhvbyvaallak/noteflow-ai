@@ -8,24 +8,24 @@ export function Badge({
   className = ''
 }) {
   const variants = {
-    default: 'bg-slate-800/80 text-slate-300 border-white/10',
-    success: 'bg-emerald-950/80 text-emerald-300 border-emerald-500/40 shadow-glow-emerald',
-    primary: 'bg-emerald-500/15 text-emerald-400 border-emerald-500/40 font-bold',
-    info: 'bg-cyan-950/80 text-cyan-300 border-cyan-500/40 shadow-glow-cyan',
-    purple: 'bg-purple-950/80 text-purple-300 border-purple-500/40 shadow-glow-purple',
-    warning: 'bg-amber-950/80 text-amber-300 border-amber-500/40',
-    danger: 'bg-rose-950/80 text-rose-300 border-rose-500/40 shadow-glow-rose',
-    dark: 'bg-slate-950 text-slate-300 border-white/10'
+    default: 'bg-[#FBF1D5] text-stone-700 border-[#E8D5A0]',
+    success: 'bg-emerald-50 text-emerald-800 border-emerald-300 shadow-sm font-bold',
+    primary: 'bg-emerald-100/70 text-emerald-900 border-emerald-400/60 font-bold',
+    info: 'bg-teal-50 text-teal-800 border-teal-300 font-bold',
+    purple: 'bg-purple-50 text-purple-800 border-purple-300 shadow-sm font-bold',
+    warning: 'bg-amber-50 text-amber-800 border-amber-300 font-bold',
+    danger: 'bg-rose-50 text-rose-800 border-rose-300 font-bold',
+    dark: 'bg-stone-900 text-stone-100 border-stone-800'
   };
 
   const dotColors = {
-    default: 'bg-slate-400',
-    success: 'bg-emerald-400',
-    primary: 'bg-emerald-400',
-    info: 'bg-cyan-400',
-    purple: 'bg-purple-400',
-    warning: 'bg-amber-400',
-    danger: 'bg-rose-400',
+    default: 'bg-stone-500',
+    success: 'bg-emerald-600',
+    primary: 'bg-emerald-600',
+    info: 'bg-teal-600',
+    purple: 'bg-purple-600',
+    warning: 'bg-amber-600',
+    danger: 'bg-rose-600',
     dark: 'bg-emerald-400'
   };
 
@@ -37,10 +37,10 @@ export function Badge({
 
   return (
     <span
-      className={`inline-flex items-center border font-sans select-none backdrop-blur-md ${variants[variant] || variants.default} ${sizes[size] || sizes.md} ${className}`}
+      className={`inline-flex items-center border font-sans select-none ${variants[variant] || variants.default} ${sizes[size] || sizes.md} ${className}`}
     >
       {dot && (
-        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dotColors[variant] || 'bg-slate-400'} animate-pulse`} />
+        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dotColors[variant] || 'bg-stone-500'} animate-pulse`} />
       )}
       {children}
     </span>

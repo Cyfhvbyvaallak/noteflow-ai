@@ -116,7 +116,7 @@ export function QuizTake() {
       <div className="flex items-center justify-between">
         <button
           onClick={() => navigate(`/lectures/${quiz.lecture_id}`)}
-          className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold text-slate-400 hover:text-emerald-400 transition-colors"
+          className="inline-flex items-center gap-2 text-xs sm:text-sm font-extrabold text-stone-600 hover:text-emerald-700 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Exit Quiz</span>
@@ -128,10 +128,10 @@ export function QuizTake() {
       </div>
 
       {/* Progress Header */}
-      <div className="p-6 rounded-3xl bg-slate-900/80 border border-white/10 shadow-glass-card space-y-4">
-        <div className="flex items-center justify-between text-xs font-bold text-white">
+      <div className="p-6 rounded-3xl bg-[#FFFDF5] border border-[#E8D5A0] shadow-warm-card space-y-4">
+        <div className="flex items-center justify-between text-xs font-bold text-stone-900">
           <span className="text-base font-black truncate">{quiz.title}</span>
-          <span className="text-cyan-400 font-mono font-black">
+          <span className="text-teal-700 font-mono font-black">
             {currentIndex + 1} / {questions.length}
           </span>
         </div>

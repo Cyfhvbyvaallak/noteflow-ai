@@ -40,8 +40,11 @@ app.add_middleware(
 )
 
 # Ensure uploads directory exists and mount static files
-os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
-app.mount("/uploads", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads")
+try:
+    os.makedirs(settings.UPLOAD_DIR, exist_ok=True)
+    app.mount("/uploads", StaticFiles(directory=settings.UPLOAD_DIR), name="uploads")
+except Exception as e:
+    logger.warning(f"Static uploads directory mount skipped: {e}")
 
 # Include Routers
 app.include_router(auth.router)
@@ -66,6 +69,15 @@ def on_startup():
 
 @app.get("/")
 def root():
+    return {
+        "app": "NoteFlow AI — Intelligent Speech-to-Study Automation Platform",
+        "version": "1.0.0",
+        "status": "online",
+        "documentation": "/docs"
+    }
+
+@app.get("/api")
+def api_root():
     return {
         "app": "NoteFlow AI — Intelligent Speech-to-Study Automation Platform",
         "version": "1.0.0",
